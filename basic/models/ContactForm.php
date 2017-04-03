@@ -23,11 +23,8 @@ class ContactForm extends Model
     public function rules()
     {
         return [
-            // name, email, subject and body are required
             [['name', 'email', 'subject', 'body'], 'required'],
-            // email has to be a valid email address
             ['email', 'email'],
-            // verifyCode needs to be entered correctly
             ['verifyCode', 'captcha'],
         ];
     }
@@ -38,9 +35,14 @@ class ContactForm extends Model
     public function attributeLabels()
     {
         return [
-            'verifyCode' => 'Verification Code',
+            'name' => 'Ваше имя',
+            'email' => 'Контактный e-mail',
+            'subject' => 'Тема',
+            'body' => 'Текст сообщения',
+            'verifyCode' => 'Код подтверждения',
         ];
     }
+
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
